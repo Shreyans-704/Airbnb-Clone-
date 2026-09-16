@@ -1,0 +1,310 @@
+.booking-card {
+  width: var(--booking-card-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
+}
+
+/* Coupon Banner */
+.coupon-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 16px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--space-6);
+  background: var(--color-white);
+}
+
+.coupon-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.coupon-text {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  line-height: 1.4;
+}
+
+.coupon-link {
+  display: block;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+  margin-top: 2px;
+}
+
+.coupon-claim {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-black);
+  padding: 6px 12px;
+  border: 1px solid var(--color-black);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-white);
+  flex-shrink: 0;
+  transition: background var(--transition-fast);
+}
+
+.coupon-claim:hover {
+  background: var(--color-gray-100);
+}
+
+/* Price Card */
+.booking-price-card {
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-booking);
+  background: var(--color-white);
+}
+
+.booking-price-row {
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.booking-price {
+  font-size: 22px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-black);
+  text-decoration: underline;
+}
+
+.booking-price-detail {
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Date Fields */
+.booking-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--color-gray-500);
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+  overflow: hidden;
+}
+
+.booking-date-field {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.booking-date-checkin {
+  border-right: 1px solid var(--color-gray-500);
+}
+
+.booking-date-label {
+  display: block;
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.booking-date-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+}
+
+/* Guests Field */
+.booking-guests-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--color-gray-500);
+  border-top: none;
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  cursor: pointer;
+  margin-bottom: var(--space-4);
+}
+
+.booking-guests-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-guests-chevron {
+  color: var(--color-black);
+}
+
+/* Cancellation */
+.booking-cancellation {
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: var(--space-4);
+  padding: 0 var(--space-4);
+}
+
+/* Reserve Button */
+.booking-reserve-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-primary-gradient);
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-reserve-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.booking-reserve-btn.reserved {
+  background: var(--color-success, #008a05);
+}
+
+/* Coupon claim active state */
+.coupon-claim.claimed {
+  background: var(--color-success, #008a05);
+  color: var(--color-white);
+  border-color: var(--color-success, #008a05);
+}
+
+/* Guest Dropdown */
+.booking-guests-container {
+  position: relative;
+}
+
+.booking-guests-chevron.open {
+  transform: rotate(180deg);
+}
+
+.booking-guests-dropdown {
+  position: absolute;
+  top: calc(100% - 10px);
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  z-index: 50;
+  animation: fadeIn 150ms ease;
+}
+
+.guest-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.guest-row:last-of-type {
+  border-bottom: none;
+}
+
+.guest-type {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.guest-age {
+  display: block;
+  font-size: 12px;
+  color: var(--color-gray-600);
+}
+
+.guest-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guest-stepper button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-gray-600);
+  transition: all var(--transition-fast);
+}
+
+.guest-stepper button:not(:disabled):hover {
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.guest-stepper button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.guest-count {
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 16px;
+  text-align: center;
+}
+
+.guest-notice {
+  font-size: 12px;
+  color: var(--color-gray-600);
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.guest-close-btn {
+  display: block;
+  width: 100%;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--color-black);
+}
+
+/* Charge Notice */
+.booking-charge-notice {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+/* Report */
+.booking-report {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  text-decoration: underline;
+  padding: var(--space-2) 0;
+}
+
+.booking-report:hover {
+  color: var(--color-black);
+}

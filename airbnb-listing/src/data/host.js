@@ -1,0 +1,21 @@
+export const host = {
+  name: 'Mirashya Homes',
+  avatar: null,
+  yearsHosting: 2,
+  totalReviews: 1463,
+  rating: 4.68,
+  responseRate: '100%',
+  responseTime: 'within an hour',
+  isSuperhost: false,
+  description: 'We are a hospitality company dedicated to providing exceptional stays in Goa. Our properties are carefully curated to offer comfort, style, and memorable experiences for every guest.',
+  coHosts: [
+    { name: 'Sharath' },
+    { name: 'Aman Dev Pahwa' },
+    { name: 'Maria Karen Priyanka' },
+    { name: 'Simran' },
+    { name: 'Pallavi' },
+    { name: 'Sanyukta' },
+    { name: 'Shruti' },
+    { name: 'Amisha' },
+  ],
+};
