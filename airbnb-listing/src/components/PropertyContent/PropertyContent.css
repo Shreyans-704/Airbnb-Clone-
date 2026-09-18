@@ -73,36 +73,40 @@
 
 /* Highlights */
 .highlights {
-  padding: var(--space-4) 0;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .highlight-item {
   display: flex;
-  gap: var(--space-4);
-  padding: var(--space-3) 0;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .highlight-icon {
   flex-shrink: 0;
-  width: 32px;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: 2px;
   color: var(--color-black);
 }
 
 .highlight-title {
-  font-size: var(--font-size-base);
+  font-size: 18px;
   font-weight: var(--font-weight-semibold);
   color: var(--color-black);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  line-height: 1.35;
 }
 
 .highlight-desc {
-  font-size: var(--font-size-sm);
+  font-size: 18px;
   color: var(--color-gray-600);
-  line-height: var(--line-height-base);
+  line-height: 1.4;
+  margin: 0;
 }
 
 /* Description */

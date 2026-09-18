@@ -12,8 +12,8 @@ export const amenitiesPreview = [
   { name: 'Hot tub', icon: 'bath', available: true },
   { name: 'Pets allowed', icon: 'paw-print', available: true },
   { name: 'Exterior security cameras on property', icon: 'camera', available: true },
-  { name: 'Carbon monoxide alarm', icon: 'alarm-smoke', available: true },
-  { name: 'Smoke alarm', icon: 'alarm-smoke', available: true },
+  { name: 'Carbon monoxide alarm', icon: 'alarm-smoke', available: false },
+  { name: 'Smoke alarm', icon: 'alarm-smoke', available: false },
 ];
 
 export const amenitiesAll = [
@@ -64,8 +64,8 @@ export const amenitiesAll = [
   {
     category: 'Home safety',
     items: [
-      { name: 'Smoke alarm', icon: 'alarm-smoke', available: true },
-      { name: 'Carbon monoxide alarm', icon: 'alarm-smoke', available: true },
+      { name: 'Smoke alarm', icon: 'alarm-smoke', available: false },
+      { name: 'Carbon monoxide alarm', icon: 'alarm-smoke', available: false },
       { name: 'Fire extinguisher', icon: 'flame', available: true },
       { name: 'First aid kit', icon: 'cross', available: true },
       { name: 'Exterior security cameras on property', icon: 'camera', available: true },

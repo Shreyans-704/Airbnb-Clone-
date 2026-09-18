@@ -210,7 +210,7 @@
 }
 
 .host-info-sub--link {
-  color: #3a6ea8;
+  color: var(--color-black);
 }
 
 /* Message button */

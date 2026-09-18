@@ -35,14 +35,14 @@
 
 .ttk-text {
   font-size: var(--font-size-sm);
-  color: var(--color-dark);
+  color: var(--color-black);
   line-height: 1.5;
   margin-bottom: var(--space-2);
 }
 
 .ttk-subtext {
   font-size: var(--font-size-sm);
-  color: var(--color-gray-dark);
+  color: var(--color-black);
   line-height: 1.5;
   margin-bottom: var(--space-4);
 }
@@ -58,7 +58,7 @@
 
 .ttk-list li {
   font-size: var(--font-size-sm);
-  color: var(--color-dark);
+  color: var(--color-black);
   line-height: 1.4;
 }
 
@@ -72,5 +72,5 @@
 }
 
 .ttk-link:hover {
-  color: var(--color-dark);
+  color: var(--color-gray-700);
 }

@@ -1,13 +1,76 @@
 import { useState } from 'react';
 import { property } from '../../data/property';
 import GuestFavourite from '../GuestFavourite/GuestFavourite';
-import { Home, Snowflake, KeyRound } from 'lucide-react';
 import './PropertyContent.css';
 
+const OutdoorIcon = ({ size = 26, strokeWidth = 1.5, ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <line x1="3" y1="18" x2="29" y2="18" />
+    <path d="M5.5 18v7a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-7" />
+    <path d="M13.5 18c0-2.5.9-4.5 2.5-4.5s2.5 2 2.5 4.5" />
+    <path d="M8.5 18c0-3.5.5-6.5 2.5-9.5 1 2 2 2.5 3 2.5.8-2 1.2-5 2-8 1.5 2.5 4 5 5 7.5.8 2 1.5 4.5 1.5 7.5" />
+  </svg>
+);
+
+const CoolIcon = ({ size = 26, strokeWidth = 1.5, ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <circle cx="16" cy="16" r="2.5" />
+    {[0, 90, 180, 270].map((deg) => (
+      <path
+        key={deg}
+        d="M14.5 13.8C13 9 10.5 6.5 12.5 3.5c2.5-1.5 5.5.5 5 5-.3 2.5-1.5 4.3-2 5.3"
+        transform={`rotate(${deg} 16 16)`}
+      />
+    ))}
+  </svg>
+);
+
+const SelfCheckInIcon = ({ size = 26, strokeWidth = 1.5, ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <line x1="3" y1="28" x2="29" y2="28" />
+    <path d="M7 28V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v22" />
+    <line x1="21" y1="4" x2="21" y2="28" />
+    <circle cx="17.5" cy="17" r="1" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 const iconMap = {
-  home: Home,
-  snowflake: Snowflake,
-  key: KeyRound,
+  home: OutdoorIcon,
+  snowflake: CoolIcon,
+  key: SelfCheckInIcon,
 };
 
 export default function PropertyContent() {
@@ -46,11 +109,11 @@ export default function PropertyContent() {
       {/* Highlights */}
       <section className="highlights">
         {property.highlights.map((highlight, index) => {
-          const IconComponent = iconMap[highlight.icon] || Home;
+          const IconComponent = iconMap[highlight.icon] || OutdoorIcon;
           return (
             <div className="highlight-item" key={index}>
               <div className="highlight-icon">
-                <IconComponent size={24} strokeWidth={1.5} />
+                <IconComponent size={26} strokeWidth={1.5} />
               </div>
               <div className="highlight-text">
                 <h4 className="highlight-title">{highlight.title}</h4>

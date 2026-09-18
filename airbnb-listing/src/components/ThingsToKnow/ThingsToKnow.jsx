@@ -1,4 +1,4 @@
-import { Calendar, Key, Shield } from 'lucide-react';
+import { CalendarX, Key, ShieldHalf } from 'lucide-react';
 import './ThingsToKnow.css';
 
 export default function ThingsToKnow() {
@@ -10,7 +10,7 @@ export default function ThingsToKnow() {
         {/* Column 1: Cancellation policy */}
         <div className="ttk-column">
           <div className="ttk-icon-wrapper">
-            <Calendar size={22} />
+          <CalendarX size={22} />
           </div>
           <h3 className="ttk-col-title">Cancellation policy</h3>
           <p className="ttk-text">
@@ -25,7 +25,7 @@ export default function ThingsToKnow() {
         {/* Column 2: House rules */}
         <div className="ttk-column">
           <div className="ttk-icon-wrapper">
-            <Key size={22} />
+          <Key size={22} />
           </div>
           <h3 className="ttk-col-title">House rules</h3>
           <ul className="ttk-list">
@@ -41,7 +41,7 @@ export default function ThingsToKnow() {
         {/* Column 3: Safety & property */}
         <div className="ttk-column">
           <div className="ttk-icon-wrapper">
-            <Shield size={22} />
+            <ShieldHalf size={22} />
           </div>
           <h3 className="ttk-col-title">Safety & property</h3>
           <ul className="ttk-list">

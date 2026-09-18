@@ -118,12 +118,12 @@
 }
 
 .sticky-nav-reserve-btn {
-  padding: 12px 24px;
+  padding: 10px 22px;
   background: var(--color-primary);
   background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
   color: var(--color-white);
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: 999px;
   font-size: 14px;
   font-weight: var(--font-weight-semibold);
   cursor: pointer;

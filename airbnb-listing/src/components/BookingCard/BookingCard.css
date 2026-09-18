@@ -159,7 +159,7 @@
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-pill, 32px);
   cursor: pointer;
   transition: all var(--transition-fast);
   margin-bottom: var(--space-4);

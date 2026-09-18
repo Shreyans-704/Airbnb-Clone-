@@ -29,6 +29,27 @@
   color: var(--color-gray-400);
 }
 
+/* Diagonal slash through the icon for unavailable amenities */
+.amenity-unavailable .amenity-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.amenity-unavailable .amenity-icon-wrap::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 1.5px;
+  background: var(--color-gray-400);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-radius: 1px;
+}
+
 .amenity-name {
   font-size: var(--font-size-base);
 }
@@ -36,6 +57,8 @@
 .amenity-strikethrough {
   text-decoration: line-through;
   color: var(--color-gray-400);
+  text-decoration-color: var(--color-gray-400);
+  text-decoration-thickness: 1.5px;
 }
 
 .amenities-show-all {

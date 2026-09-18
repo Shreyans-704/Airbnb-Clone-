@@ -29,7 +29,9 @@ export default function Amenities({ onShowAll }) {
               className={`amenity-item ${!amenity.available ? 'amenity-unavailable' : ''}`}
               key={index}
             >
-              <Icon size={24} strokeWidth={1.5} />
+              <span className="amenity-icon-wrap">
+                <Icon size={24} strokeWidth={1.5} />
+              </span>
               <span className={`amenity-name ${!amenity.available ? 'amenity-strikethrough' : ''}`}>
                 {amenity.name}
               </span>

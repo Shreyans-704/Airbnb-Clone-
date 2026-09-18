@@ -5,59 +5,72 @@ import './LocationMap.css';
 export default function LocationMap() {
   return (
     <section className="location" id="location" aria-labelledby="location-heading">
-      <h2 className="location-heading" id="location-heading">{property.locationFull}</h2>
+      <h2 className="location-heading" id="location-heading">Where you'll be</h2>
+      <p className="location-subheading">{property.locationFull}</p>
 
       {/* SVG Map Approximation */}
       <div className="map-container" role="img" aria-label="Map showing property location in Candolim, Goa">
-        <svg className="map-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-          {/* Water background */}
-          <rect width="800" height="400" fill="#D4E6F1" />
+        <svg className="map-svg" viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          {/* Water background — light blue */}
+          <rect width="960" height="480" fill="#acd3e6" />
 
-          {/* Land masses */}
-          <path d="M0,0 L800,0 L800,50 Q700,80 600,60 Q500,40 400,70 Q300,100 200,80 Q100,60 0,90 Z" fill="#E8E8E0" />
-          <path d="M0,400 L800,400 L800,120 Q700,100 600,140 Q500,180 400,160 Q350,150 300,170 Q200,200 100,180 Q50,170 0,200 Z" fill="#E8E8E0" />
-          <path d="M200,0 L400,0 L400,400 L200,400 Q220,350 240,300 Q260,250 250,200 Q240,150 220,100 Q200,50 200,0 Z" fill="#E8E8E0" />
+          {/* Land — pale green, diagonal shoreline from top-right toward bottom-left */}
+          <path d="M380,0 L960,0 L960,480 L220,480 Z" fill="#e9f0e4" />
 
-          {/* Road grid */}
-          <g stroke="#D5D5CA" strokeWidth="1" opacity="0.6">
-            <line x1="150" y1="0" x2="150" y2="400" />
-            <line x1="300" y1="0" x2="300" y2="400" />
-            <line x1="450" y1="0" x2="450" y2="400" />
-            <line x1="600" y1="0" x2="600" y2="400" />
-            <line x1="0" y1="100" x2="800" y2="100" />
-            <line x1="0" y1="200" x2="800" y2="200" />
-            <line x1="0" y1="300" x2="800" y2="300" />
+          {/* Grid lines on land only (clipped) */}
+          <clipPath id="land-clip">
+            <path d="M380,0 L960,0 L960,480 L220,480 Z" />
+          </clipPath>
+          <g stroke="#d2d9c8" strokeWidth="0.8" opacity="0.7" clipPath="url(#land-clip)">
+            <line x1="0"   y1="0"   x2="0"   y2="480" />
+            <line x1="120" y1="0"   x2="120" y2="480" />
+            <line x1="240" y1="0"   x2="240" y2="480" />
+            <line x1="360" y1="0"   x2="360" y2="480" />
+            <line x1="480" y1="0"   x2="480" y2="480" />
+            <line x1="600" y1="0"   x2="600" y2="480" />
+            <line x1="720" y1="0"   x2="720" y2="480" />
+            <line x1="840" y1="0"   x2="840" y2="480" />
+            <line x1="960" y1="0"   x2="960" y2="480" />
+            <line x1="0"   y1="0"   x2="960" y2="0"   />
+            <line x1="0"   y1="96"  x2="960" y2="96"  />
+            <line x1="0"   y1="192" x2="960" y2="192" />
+            <line x1="0"   y1="288" x2="960" y2="288" />
+            <line x1="0"   y1="384" x2="960" y2="384" />
+            <line x1="0"   y1="480" x2="960" y2="480" />
           </g>
 
-          {/* Approximate area circle */}
-          <circle cx="400" cy="200" r="80" fill="rgba(255, 56, 92, 0.1)" stroke="rgba(255, 56, 92, 0.3)" strokeWidth="1" />
+          {/* Translucent green circle 1 — left side, overlapping shoreline */}
+          <circle cx="300" cy="195" r="75" fill="rgba(180, 210, 165, 0.45)" />
 
-          {/* Home marker */}
-          <g transform="translate(400, 200)">
-            <circle r="8" fill="#FF385C" />
-            <circle r="4" fill="white" />
+          {/* Translucent green circle 2 — right side, on land */}
+          <circle cx="672" cy="283" r="75" fill="rgba(180, 210, 165, 0.45)" />
+
+          {/* Home marker — black circle with white house icon */}
+          <g transform="translate(468, 238)">
+            <circle r="22" fill="#222222" />
+            {/* House icon in white */}
+            <path
+              d="M0,-10 L10,0 L10,9 L6,9 L6,3 L-6,3 L-6,9 L-10,9 L-10,0 Z"
+              fill="white"
+              strokeWidth="0"
+            />
+            <rect x="-3" y="3" width="6" height="6" fill="white" />
           </g>
-
-          {/* Place labels */}
-          <text x="350" y="130" fill="#666" fontSize="11" fontFamily="Inter, sans-serif">Candolim</text>
-          <text x="200" y="250" fill="#888" fontSize="10" fontFamily="Inter, sans-serif">Calangute</text>
-          <text x="550" y="170" fill="#888" fontSize="10" fontFamily="Inter, sans-serif">Aguada</text>
-          <text x="150" y="350" fill="#aaa" fontSize="9" fontFamily="Inter, sans-serif">Arabian Sea</text>
         </svg>
 
-        {/* Map Controls */}
-        <div className="map-controls">
-          <button className="map-search-btn" type="button" aria-label="Search map">
-            <Search size={14} />
+        {/* Search button — top LEFT */}
+        <button className="map-search-btn" type="button" aria-label="Search map">
+          <Search size={14} />
+        </button>
+
+        {/* Zoom controls — top RIGHT */}
+        <div className="map-zoom">
+          <button className="map-zoom-btn" type="button" aria-label="Zoom in">
+            <Plus size={14} />
           </button>
-          <div className="map-zoom">
-            <button className="map-zoom-btn" type="button" aria-label="Zoom in">
-              <Plus size={14} />
-            </button>
-            <button className="map-zoom-btn" type="button" aria-label="Zoom out">
-              <Minus size={14} />
-            </button>
-          </div>
+          <button className="map-zoom-btn" type="button" aria-label="Zoom out">
+            <Minus size={14} />
+          </button>
         </div>
       </div>
 
@@ -68,11 +81,11 @@ export default function LocationMap() {
       <div className="location-description">
         <h3 className="location-subtitle">Neighbourhood highlights</h3>
         <p className="location-text">
-          Located in the heart of Candolim, this property offers easy access to
-          Candolim Beach, popular restaurants, cafés, and vibrant nightlife.
-          The area is known for its beautiful coastline and relaxed atmosphere,
-          making it a perfect base for exploring North Goa.
+          Located in the heart of Candolim, Amor de Goa offers a peaceful stay with easy access to beaches, cafés, and popular attractions.
         </p>
+        <button className="location-show-more" type="button" onClick={(e) => e.preventDefault()}>
+          Show more <span className="location-show-more-arrow">›</span>
+        </button>
       </div>
     </section>
   );
