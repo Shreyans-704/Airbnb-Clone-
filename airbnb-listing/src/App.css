@@ -19,10 +19,10 @@
 .property-columns {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: flex-start;
   position: relative;
   gap: var(--space-12);
-  margin-top: var(--space-4);
+  margin-top: 24px;
 }
 
 .property-primary-column {
@@ -33,6 +33,10 @@
 .property-sidebar-column {
   width: var(--booking-card-width, 372px);
   flex-shrink: 0;
+  position: sticky;
+  top: calc(var(--sticky-nav-height, 80px) + 24px);
+  align-self: flex-start;
+  z-index: 20;
 }
 
 @media (max-width: 1128px) {

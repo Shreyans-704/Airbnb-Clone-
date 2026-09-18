@@ -1,37 +1,37 @@
 .photo-tour-overlay {
   position: fixed;
   inset: 0;
-  background: var(--color-white);
+  background: var(--color-white, #ffffff);
   z-index: var(--z-modal, 300);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   animation: tourFadeIn 0.2s ease;
 }
 
 @keyframes tourFadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
+/* Top Sticky Header */
 .photo-tour-header {
   position: sticky;
   top: 0;
-  background: var(--color-white);
+  background: var(--color-white, #ffffff);
   height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  border-bottom: 1px solid var(--border-light);
-  z-index: 10;
+  border-bottom: 1px solid var(--border-light, #ebebeb);
+  z-index: 20;
 }
 
 .photo-tour-back-btn {
@@ -44,7 +44,7 @@
   border: none;
   background: none;
   cursor: pointer;
-  color: var(--color-black);
+  color: var(--color-black, #222222);
   transition: background 0.15s ease;
 }
 
@@ -53,27 +53,39 @@
 }
 
 .photo-tour-back-btn:focus-visible {
-  outline: 2px solid var(--color-black);
+  outline: 2px solid var(--color-black, #222222);
   outline-offset: 2px;
+}
+
+.photo-tour-header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-black, #222222);
+  margin: 0;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .photo-tour-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .photo-tour-action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: none;
   border: none;
   font-size: 14px;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-black);
+  font-weight: 500;
+  color: var(--color-black, #222222);
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 8px;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -85,78 +97,174 @@
 }
 
 .photo-tour-action-btn:focus-visible {
-  outline: 2px solid var(--color-black);
+  outline: 2px solid var(--color-black, #222222);
   outline-offset: 2px;
 }
 
-.photo-tour-action-btn.is-saved {
-  color: var(--color-black);
+.photo-tour-action-text {
+  display: inline;
 }
 
+/* Main Content */
 .photo-tour-content {
   flex: 1;
-  padding: 32px 24px 64px;
+  padding: 32px 24px 80px;
 }
 
 .photo-tour-inner {
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
-.photo-tour-title {
-  font-size: 26px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-black);
-  margin-bottom: 32px;
-}
-
-.photo-tour-category {
+/* Thumbnail Strip at Top */
+.photo-tour-nav-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  padding-bottom: 36px;
   margin-bottom: 48px;
+  border-bottom: 1px solid var(--border-light, #ebebeb);
 }
 
-.photo-tour-category-title {
-  font-size: 20px;
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-black);
-  margin-bottom: 20px;
+.photo-tour-thumb-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 80px;
+  transition: opacity 0.15s ease;
 }
 
-.photo-tour-grid {
+.photo-tour-thumb-img-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-gray-100, #f0f0f0);
+  margin-bottom: 8px;
+}
+
+.photo-tour-thumb-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* Subtle Zoom-in on hover for thumbnails */
+.photo-tour-thumb-btn:hover .photo-tour-thumb-img-wrap img {
+  transform: scale(1.06);
+}
+
+.photo-tour-thumb-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-black, #222222);
+  line-height: 1.25;
+}
+
+.photo-tour-thumb-btn.is-active .photo-tour-thumb-label {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+/* Room Sections */
+.photo-tour-rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.photo-tour-room-section {
+  display: grid;
+  grid-template-columns: 320px 580px;
+  justify-content: space-between;
+  gap: 48px;
+  scroll-margin-top: 84px;
+}
+
+.photo-tour-room-info {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.photo-tour-room-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-black, #222222);
+  margin: 0 0 8px;
+  letter-spacing: -0.4px;
+}
+
+.photo-tour-room-features {
+  font-size: 14px;
+  color: #717171;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Photo Grid */
+.photo-tour-room-gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 16px;
+  width: 100%;
+  max-width: 580px;
 }
 
-.photo-tour-item {
-  margin: 0;
-  cursor: pointer;
-  border-radius: 12px;
+.photo-tour-photo-wrap {
+  position: relative;
   overflow: hidden;
-  background: var(--color-gray-100, #f7f7f7);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--color-gray-100, #f0f0f0);
 }
 
-.photo-tour-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+/* Exact aspect ratios matching reference (573x382 hero, 279x182 small) */
+.photo-tour-photo-wrap.is-hero,
+.photo-tour-room-gallery.count-1 .photo-tour-photo-wrap,
+.photo-tour-room-gallery.count-2 .photo-tour-photo-wrap {
+  grid-column: span 2;
+  aspect-ratio: 3 / 2;
 }
 
-.photo-tour-item:focus-visible {
-  outline: 2px solid var(--color-black);
+.photo-tour-room-gallery:not(.count-1):not(.count-2) .photo-tour-photo-wrap:not(.is-hero) {
+  aspect-ratio: 279 / 182;
+}
+
+.photo-tour-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Subtle Zoom-in on hover for room photos */
+.photo-tour-photo-wrap:hover img {
+  transform: scale(1.035);
+}
+
+.photo-tour-photo-wrap:focus-visible {
+  outline: 2px solid var(--color-black, #222222);
   outline-offset: 2px;
 }
 
-.photo-tour-item img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .photo-tour-room-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-.photo-tour-caption {
-  padding: 12px 16px;
-  font-size: 14px;
-  color: var(--color-gray-700, #484848);
-  line-height: 1.4;
-  background: var(--color-white);
+  .photo-tour-room-info {
+    position: static;
+  }
 }

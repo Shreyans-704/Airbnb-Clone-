@@ -56,13 +56,13 @@
   --space-12: 48px;
 
   /* Layout */
-  --page-max-width: 1120px;
+  --page-max-width: 1397px;
   --page-padding: 80px;
   --page-padding-x: 80px;
   --header-height: 80px;
-  --sticky-nav-height: 64px;
-  --gallery-height: 450px;
-  --gallery-gap: 8px;
+  --sticky-nav-height: 80px;
+  --gallery-height: 613px;
+  --gallery-gap: 9px;
   --gallery-radius: 12px;
   --content-width: 61.5%;
   --sidebar-width: 33%;

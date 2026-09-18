@@ -78,16 +78,16 @@ export default function App() {
             onImageClick={handleOpenLightbox}
           />
 
-          {/* Two-Column Grid: Main Content (Left) & Sticky Booking Widget (Right) */}
+          {/* Two-Column Grid: left content + sticky booking widget.
+              Only sections that should appear beside the sidebar go here.
+              Reviews and below are OUTSIDE this flex container so the
+              sticky sidebar stops naturally after Calendar. */}
           <div className="property-columns">
             <div className="property-primary-column">
               <PropertyContent />
               <SleepingArrangements />
               <Amenities onShowAll={handleOpenAmenities} />
               <Calendar />
-              <Reviews />
-              <LocationMap />
-              <HostSection />
             </div>
 
             <div className="property-sidebar-column">
@@ -95,7 +95,10 @@ export default function App() {
             </div>
           </div>
 
-          {/* Full-width bottom sections */}
+          {/* Full-width sections — sidebar is NOT sticky here */}
+          <Reviews />
+          <LocationMap />
+          <HostSection />
           <ThingsToKnow />
           <NearbyListings />
         </div>
@@ -124,6 +127,7 @@ export default function App() {
         currentIndex={lightboxIndex}
         onClose={handleCloseLightbox}
         onNavigate={handleNavigateLightbox}
+        onOpenPhotoTour={handleOpenPhotoTour}
       />
     </div>
   );

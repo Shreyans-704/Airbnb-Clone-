@@ -56,7 +56,7 @@ export default function HeroGallery({ onShowAllPhotos, onImageClick }) {
           <img
             src={galleryImages[3].src}
             alt={galleryImages[3].alt}
-            loading="lazy"
+            loading="eager"
           />
         </button>
         <div
@@ -75,7 +75,7 @@ export default function HeroGallery({ onShowAllPhotos, onImageClick }) {
           <img
             src={galleryImages[4].src}
             alt={galleryImages[4].alt}
-            loading="lazy"
+            loading="eager"
           />
           <button
             className="show-all-btn"

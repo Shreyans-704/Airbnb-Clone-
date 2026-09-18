@@ -137,6 +137,7 @@
   max-height: 120px;
   overflow: hidden;
   position: relative;
+  transition: max-height var(--transition-base, 200ms ease);
 }
 
 .description-text::after {
@@ -147,20 +148,43 @@
   right: 0;
   height: 40px;
   background: linear-gradient(transparent, white);
+  pointer-events: none;
+  transition: opacity var(--transition-fast, 150ms ease);
+}
+
+.description-text.expanded {
+  max-height: 2000px;
+  overflow: visible;
+}
+
+.description-text.expanded::after {
+  display: none;
+  opacity: 0;
 }
 
 .show-more-btn {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   color: var(--color-black);
-  text-decoration: underline;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: var(--space-1);
   background: none;
   border: none;
   padding: 0;
+}
+
+.show-more-btn span:first-child {
+  text-decoration: underline;
+}
+
+.show-more-arrow {
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .show-more-btn:hover {

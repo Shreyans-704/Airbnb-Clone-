@@ -1,14 +1,28 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { X, ChevronLeft, ChevronRight, Share, Heart, Check } from 'lucide-react';
+import { useEffect, useCallback, useRef } from 'react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { galleryImages } from '../../data/gallery';
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 import './Lightbox.css';
 
-export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) {
+function NineDotGridIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <circle cx="2" cy="2" r="1.5" />
+      <circle cx="8" cy="2" r="1.5" />
+      <circle cx="14" cy="2" r="1.5" />
+      <circle cx="2" cy="8" r="1.5" />
+      <circle cx="8" cy="8" r="1.5" />
+      <circle cx="14" cy="8" r="1.5" />
+      <circle cx="2" cy="14" r="1.5" />
+      <circle cx="8" cy="14" r="1.5" />
+      <circle cx="14" cy="14" r="1.5" />
+    </svg>
+  );
+}
+
+export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate, onOpenPhotoTour }) {
   useBodyScrollLock(isOpen);
 
-  const [isSaved, setIsSaved] = useState(false);
-  const [copied, setCopied] = useState(false);
   const overlayRef = useRef(null);
   const closeBtnRef = useRef(null);
   const triggerElementRef = useRef(null);
@@ -47,7 +61,6 @@ export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) 
       } else if (e.key === 'ArrowRight') {
         handleNext();
       } else if (e.key === 'Tab') {
-        // Focus trap inside Lightbox
         const container = overlayRef.current;
         if (!container) return;
         const focusables = Array.from(
@@ -75,23 +88,6 @@ export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) 
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose, handlePrev, handleNext]);
 
-  const handleShare = async () => {
-    try {
-      if (navigator.clipboard && window.location.href) {
-        await navigator.clipboard.writeText(window.location.href);
-      }
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const handleSave = () => {
-    setIsSaved((prev) => !prev);
-  };
-
   if (!isOpen) return null;
 
   const currentImage = galleryImages[currentIndex] || galleryImages[0];
@@ -107,47 +103,31 @@ export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) 
       {/* Lightbox Header */}
       <div className="lightbox-header">
         <button
-          ref={closeBtnRef}
-          className="lightbox-close-btn"
-          onClick={onClose}
+          className="lightbox-grid-btn"
+          onClick={() => {
+            onClose();
+            onOpenPhotoTour?.();
+          }}
           type="button"
-          aria-label="Close viewer"
+          aria-label="Show all photos"
         >
-          <X size={20} />
-          <span>Close</span>
+          <NineDotGridIcon />
         </button>
 
-        <span className="lightbox-counter" aria-live="polite">
-          {currentIndex + 1} / {galleryImages.length}
-        </span>
+        <h2 className="lightbox-title">{currentImage.category || 'Photo'}</h2>
 
-        <div className="lightbox-header-actions">
-          <div className="lightbox-share-wrapper">
-            <button
-              className="lightbox-action-btn"
-              type="button"
-              aria-label={copied ? 'Link copied' : 'Share photo'}
-              onClick={handleShare}
-            >
-              {copied ? <Check size={16} color="var(--color-success, #008A05)" /> : <Share size={16} />}
-            </button>
-            {copied && (
-              <span className="lightbox-toast" role="status">
-                Link copied!
-              </span>
-            )}
-          </div>
+        <div className="lightbox-header-right">
+          <span className="lightbox-counter" aria-live="polite">
+            {currentIndex + 1} of {galleryImages.length}
+          </span>
           <button
-            className="lightbox-action-btn"
+            ref={closeBtnRef}
+            className="lightbox-close-btn"
+            onClick={onClose}
             type="button"
-            aria-label={isSaved ? 'Remove from wishlist' : 'Save to wishlist'}
-            onClick={handleSave}
+            aria-label="Close viewer"
           >
-            <Heart
-              size={16}
-              fill={isSaved ? 'var(--color-primary, #FF385C)' : 'none'}
-              color={isSaved ? 'var(--color-primary, #FF385C)' : 'currentColor'}
-            />
+            <X size={18} />
           </button>
         </div>
       </div>
@@ -160,7 +140,7 @@ export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) 
           type="button"
           aria-label="Previous photo"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} />
         </button>
 
         <div className="lightbox-image-container">
@@ -169,7 +149,6 @@ export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) 
             alt={currentImage.alt}
             className="lightbox-image"
           />
-          <p className="lightbox-caption">{currentImage.alt}</p>
         </div>
 
         <button
@@ -178,7 +157,7 @@ export default function Lightbox({ isOpen, currentIndex, onClose, onNavigate }) 
           type="button"
           aria-label="Next photo"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={20} />
         </button>
       </div>
     </div>

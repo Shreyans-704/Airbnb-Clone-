@@ -1,9 +1,5 @@
 .booking-card {
-  width: var(--booking-card-width);
-  flex-shrink: 0;
-  position: sticky;
-  top: 100px;
-  align-self: flex-start;
+  width: 100%;
 }
 
 /* Coupon Banner */
@@ -140,11 +136,18 @@
 
 /* Cancellation */
 .booking-cancellation {
-  font-size: var(--font-size-sm);
-  color: var(--color-black);
+  font-size: 13px;
+  color: var(--color-gray-600);
+  background: var(--color-gray-100);
+  border-radius: var(--border-radius-sm, 8px);
   text-align: center;
   margin-bottom: var(--space-4);
-  padding: 0 var(--space-4);
+  padding: 10px 14px;
+}
+
+.booking-cancellation strong {
+  color: var(--color-black);
+  font-weight: var(--font-weight-semibold);
 }
 
 /* Reserve Button */
@@ -289,7 +292,8 @@
   font-size: var(--font-size-sm);
   color: var(--color-gray-600);
   text-align: center;
-  margin-bottom: var(--space-6);
+  margin-top: 16px;
+  margin-bottom: 0;
 }
 
 /* Report */
@@ -297,12 +301,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: 8px;
   width: 100%;
   font-size: var(--font-size-sm);
   color: var(--color-gray-600);
   text-decoration: underline;
-  padding: var(--space-2) 0;
+  padding: 16px 0 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: color var(--transition-fast);
 }
 
 .booking-report:hover {

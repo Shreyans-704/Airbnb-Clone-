@@ -192,13 +192,13 @@ export default function BookingCard() {
         </button>
 
         <p className="booking-charge-notice">You won&apos;t be charged yet</p>
-
-        {/* Report */}
-        <button className="booking-report" type="button">
-          <Flag size={14} />
-          <span>Report this listing</span>
-        </button>
       </div>
+
+      {/* Report */}
+      <button className="booking-report" type="button">
+        <Flag size={14} />
+        <span>Report this listing</span>
+      </button>
     </aside>
   );
 }

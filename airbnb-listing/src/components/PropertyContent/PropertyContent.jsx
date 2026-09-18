@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { property } from '../../data/property';
 import GuestFavourite from '../GuestFavourite/GuestFavourite';
 import { Home, Snowflake, KeyRound } from 'lucide-react';
@@ -10,6 +11,7 @@ const iconMap = {
 };
 
 export default function PropertyContent() {
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   return (
     <div className="property-content">
       {/* Property Overview */}
@@ -68,11 +70,16 @@ export default function PropertyContent() {
             {property.translatedNotice} <button className="show-original-btn" type="button"><strong>Show original</strong></button>
           </p>
         </div>
-        <div className="description-text">
+        <div className={`description-text ${isDescriptionExpanded ? 'expanded' : ''}`}>
           <p>{property.description}</p>
         </div>
-        <button className="show-more-btn" type="button">
-          Show more <span aria-hidden="true">›</span>
+        <button
+          className="show-more-btn"
+          type="button"
+          aria-expanded={isDescriptionExpanded}
+          onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+        >
+          <span>{isDescriptionExpanded ? 'Show less' : 'Show more'}</span> <span className="show-more-arrow" aria-hidden="true">›</span>
         </button>
       </section>
     </div>
