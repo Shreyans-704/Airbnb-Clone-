@@ -13,7 +13,6 @@ import HostSection from './components/HostSection/HostSection';
 import ThingsToKnow from './components/ThingsToKnow/ThingsToKnow';
 import NearbyListings from './components/NearbyListings/NearbyListings';
 import BookingCard from './components/BookingCard/BookingCard';
-import Footer from './components/Footer/Footer';
 import AmenitiesModal from './components/AmenitiesModal/AmenitiesModal';
 import PhotoTour from './components/PhotoTour/PhotoTour';
 import Lightbox from './components/Lightbox/Lightbox';
@@ -104,8 +103,6 @@ export default function App() {
         </div>
       </main>
 
-      {/* Airbnb Global Footer */}
-      <Footer />
 
       {/* Overlays / Modals */}
       <AmenitiesModal

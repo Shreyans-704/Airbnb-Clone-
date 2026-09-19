@@ -61,13 +61,17 @@
 }
 
 .host-name {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base, 16px);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 20px;
   color: var(--color-black);
+  margin-bottom: 2px;
 }
 
 .host-tenure {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-sm, 14px);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: 18px;
   color: var(--color-gray-600);
 }
 
@@ -95,17 +99,18 @@
 }
 
 .highlight-title {
-  font-size: 18px;
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base, 16px);
+  font-weight: var(--font-weight-semibold, 600);
   color: var(--color-black);
-  margin-bottom: 4px;
-  line-height: 1.35;
+  margin-bottom: 2px;
+  line-height: 20px;
 }
 
 .highlight-desc {
-  font-size: 18px;
+  font-size: var(--font-size-sm, 14px);
+  font-weight: var(--font-weight-normal, 400);
   color: var(--color-gray-600);
-  line-height: 1.4;
+  line-height: 20px;
   margin: 0;
 }
 

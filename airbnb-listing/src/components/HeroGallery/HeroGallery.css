@@ -1,4 +1,5 @@
 .hero-gallery {
+  width: 100%;
   margin-bottom: var(--space-6);
 }
 
@@ -6,11 +7,11 @@
   display: grid;
   grid-template-columns: 700fr 341fr 337fr;
   grid-template-rows: 306fr 307fr;
-  row-gap: 9px;
-  column-gap: 9.5px;
+  row-gap: 8px;
+  column-gap: 8px;
   height: 613px;
   width: 100%;
-  max-width: 1397px;
+  max-width: 100%;
   border-radius: var(--gallery-radius, 12px);
   overflow: hidden;
 }

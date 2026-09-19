@@ -53,7 +53,7 @@ export const nearbyListings = [
     title: 'Serene Garden Apartment Candolim',
     price: 27800,
     rating: 4.87,
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18f6b0cfa?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop',
   },
   {
     id: 9,
